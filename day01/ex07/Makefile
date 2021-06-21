@@ -1,8 +1,8 @@
-SRCS_NAME	=	Contact.cpp main.cpp
+SRCS_NAME	=	replace.cpp
 				
 OBJS		=	${SRCS_NAME:.cpp=.o}
 
-NAME		=	nokia_3310
+NAME		=	replace
 
 RM			=	rm -f
 
@@ -10,8 +10,7 @@ CC			=	clang++
 
 FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
-all:	$(NAME)
-
+all:					$(NAME)
 
 %.o: %.cpp				
 		$(CC) $(FLAG) -c $< -o $@

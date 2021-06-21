@@ -6,11 +6,11 @@
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:34:15 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 10:46:15 by tgrangeo         ###   ########lyon.fr   */
+/*   Updated: 2021/06/21 18:29:34 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 void	print_begin(void)
 {
@@ -68,15 +68,19 @@ int	print_index(Contact phone[8]){	//demander un index et afficher le contact a 
 
 	std::cout << "=> Entrer un index pour voir le contact" << std::endl;
 	std::getline(std::cin, str);
-	if (isdigit(atoi(str.c_str())) == 0){
-		int a = atoi(str.c_str());
-		if ((a <= 7 && a >= 0) && phone[a].Getisfilled() == 1){
-			phone[a].PrintContact();
-			return 0;
-		}
-		else 
+	int i = 0;
+	while (str[i]){
+		if (isdigit(str[i]) == 0)
+		{
 			std::cout << "=> Wrong index noob" << std::endl;
-		
+			return 1;
+		}
+		i++;
+	}
+	int a = atoi(str.c_str());
+	if ((a <= 7 && a >= 0) && phone[a].Getisfilled() == 1){
+		phone[a].PrintContact();
+		return 0;
 	}
 	else 
 		std::cout << "=> Wrong index noob" << std::endl;
@@ -101,10 +105,14 @@ int main(void){
 			else
 				std::cout << "=> Too much Contact" << std::endl;
 		}
-		else if (ret == 2){	
+		else if (ret == 2){
+			if (phone[0].Getisfilled() == 0)
+				std::cout << "=> Not Enough Contact" << std::endl;
+			else{
 			Search(phone);
 			while(ret != 0)
 				ret = print_index(phone);
+			}	
 		}
 		else if (ret == -1)
 			std::cout << "=> I don't know your command" << std::endl;

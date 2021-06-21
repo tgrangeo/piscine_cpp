@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 18:44:20 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 18:50:52 by tgrangeo         ###   ########lyon.fr   */
+/*   Updated: 2021/06/21 10:44:30 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class HumanB{
 		~HumanB(void);
 	//Getter and Setter
 		void	attack(void);
-		void	setWeapon(Weapon arme);
+		void	setWeapon(Weapon &arme);
 
 	private:
 		std::string _name;
