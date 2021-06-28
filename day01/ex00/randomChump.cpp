@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.cpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 11:18:52 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 11:21:12 by tgrangeo         ###   ########lyon.fr   */
+/*   Created: 2021/06/24 13:16:21 by tgrangeo          #+#    #+#             */
+/*   Updated: 2021/06/24 13:16:35 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#include "Zombie.hpp"
 
-void memoryLeak(){
-	std::string* panthere = new std::string("String panthere");
-	std::cout << *panthere << std::endl;
+void		Zombie::randomChump(std::string name){
+	Zombie	z;
 
-	delete panthere;
-}
-
-int main(void){
-	memoryLeak();
-	return (0);
+	z.SetName(name);
+	z.announce();
 }

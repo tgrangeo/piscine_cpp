@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Human.cpp                                          :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 17:21:38 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 17:27:29 by tgrangeo         ###   ########lyon.fr   */
+/*   Created: 2021/06/18 18:45:05 by tgrangeo          #+#    #+#             */
+/*   Updated: 2021/06/24 17:25:02 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Human.hpp"
+#include "HumanB.hpp"
 
-Human::Human(void){
+HumanB::HumanB(std::string str): _name(str){
 }
 
-Human::~Human(void){
+HumanB::~HumanB(void){
 }
 
-Brain	Human::GetBrain(void){
-	return _cerveau;
+void	HumanB::attack(void){
+	if (_w == NULL)
+		std::cout << _name << " attacks with Nothing " << std::endl;
+	else
+		std::cout << _name << " attacks with his " << _w->GetType() << std::endl;
 }
 
-Brain	*Human::identify(void){
-	return _cerveau.identify();
+void	HumanB::setWeapon(Weapon &arme){
+	_w = &arme;
 }

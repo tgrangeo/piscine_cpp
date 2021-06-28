@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 12:31:01 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 16:30:13 by tgrangeo         ###   ########lyon.fr   */
+/*   Created: 2021/06/24 13:15:32 by tgrangeo          #+#    #+#             */
+/*   Updated: 2021/06/24 13:15:54 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void){
-}
+Zombie		*Zombie::newZombie(std::string name){
+	Zombie	*z;
 
-Zombie::~Zombie(void){
-}
+	z = new Zombie();
 
-std::string	Zombie::GetName(void){
-	return (_name);
-}
-
-std::string	Zombie::GetType(void){
-	return (_type);
-}
-
-void		Zombie::SetType(std::string str){
-	_type = str;
-}
-
-void		Zombie::SetName(std::string str){
-	_name = str;
-}
-
-void		Zombie::advert(void){
-	std::cout << GetName() << " de type " <<GetType() << " > Alllleeeerrr les bleues !!!" << std::endl;
+	z->SetName(name);
+	return (z);
 }

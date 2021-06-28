@@ -1,50 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieEvent.cpp                                    :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:57:58 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 15:10:54 by tgrangeo         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 11:09:56 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ZombieEvent.hpp"
+#include "Zombie.hpp"
 
-ZombieEvent::ZombieEvent(void){
-	_type = "normal";
+Zombie::Zombie(void){
+	std::cout << "Constructor Zombie called" << std::endl;
 }
 
-ZombieEvent::~ZombieEvent(void){
+Zombie::~Zombie(void){
+	std::cout << "Destructor Zombie called for "<< _name << std::endl;
 }
 
-void	ZombieEvent::SetZombieType(std::string str){
-	_type = str;
+std::string	Zombie::GetName(void){
+	return _name;
 }
 
-Zombie	*ZombieEvent::newZombie(std::string name){
+void		Zombie::SetName(std::string str){
+	_name = str;
+}
+
+void		Zombie::announce(void){
+	std::cout << "<" << GetName() << "> BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+Zombie		*Zombie::newZombie(std::string name){
 	Zombie	*z;
 
 	z = new Zombie();
 
 	z->SetName(name);
-	z->SetType(_type);
 	return (z);
 }
 
-Zombie	*ZombieEvent::randomChump(void){
-	Zombie	*z;
-	std::string		tab_name[5];
+void		Zombie::randomChump(std::string name){
+	Zombie	z;
 
-	tab_name[0] = "pikachu";
-	tab_name[1] = "salameche";
-	tab_name[2] = "bulbizare";
-	tab_name[3] = "carapuce";
-	tab_name[4] = "leviator";
-	srand(time(NULL));
-	int r = rand()%5;
-	z = newZombie(tab_name[r]);
-	z->advert();
-	return (z);
+	z.SetName(name);
+	z.announce();
 }

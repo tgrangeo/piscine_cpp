@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:02:30 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/21 15:59:26 by tgrangeo         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 11:18:40 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int main(int ac, char **av){
 	{
 		found = 0;
 		found = buffer.find(ToModify, found + len);
+		len = NewString.length();
 		while(found >= 0)
 		{
 			buffer.replace(found,ToModify.length(), NewString);
 			found = buffer.find(ToModify, found + len);
-			
+			std::cout << found << std::endl;
 		}
-		len = NewString.length();
 		NewFile << buffer << std::endl;
 	}
 	return (0);

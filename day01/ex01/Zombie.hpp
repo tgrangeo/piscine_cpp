@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/18 15:24:31 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/06/18 16:34:47 by tgrangeo         ###   ########lyon.fr   */
+/*   Created: 2021/06/18 13:56:56 by tgrangeo          #+#    #+#             */
+/*   Updated: 2021/06/28 11:04:09 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _ZOMBIEHORDE_
-# define _ZOMBIEHORDE_
+#ifndef _ZOMBIE_HPP
+# define _ZOMBIE_HPP
 
-#include "Zombie.hpp"
-#include <stdlib.h> 
+#include <stdlib.h>     //srand, rand
+#include <iostream>
+#include <string>
 #include <time.h>
 
-class ZombieHorde{
+class Zombie{
 
 	public:
 	//constructor and destructor
-		ZombieHorde(void);
-		ZombieHorde(int n);
-		~ZombieHorde(void);
+		Zombie(void);
+		~Zombie(void);
 	//Getter and Setter
-		
-	//Other
-		void Horde_cry(void);
-	private:
-		int 	_n;
-		Zombie	*_z;
+		std::string	GetName(void);
+		void		SetName(std::string);
+		void		SetNumber(int n);
+	//Others
+		void		announce(void);
+		Zombie		*newZombie(std::string name);
+		void		randomChump(std::string name);
+		void		Horde_cry(Zombie *horde);
+		Zombie		*ZombieHorde(int n, std::string name);
 
+	private:
+		std::string		_name;
+		int				_n;
 };
 
 #endif

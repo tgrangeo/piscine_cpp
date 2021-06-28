@@ -13,13 +13,14 @@ FLAGS		=	-Wall -Wextra -Werror -std=c++98
 all:					$(NAME)
 
 %.o: %.cpp				
-		$(CC) $(FLAG) -c $< -o $@
+		$(CC) $(FLAGS) -c $< -o $@
 	
 $(NAME):				$(OBJS)
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	@$(RM) $(OBJS)
+	@$(RM) *.replace
 
 fclean:					clean
 	@$(RM) $(NAME)
