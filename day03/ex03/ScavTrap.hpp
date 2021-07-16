@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdel-ros <jdel-ros@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 14:55:06 by jdel-ros          #+#    #+#             */
-/*   Updated: 2021/03/04 14:56:2 by jdel-ros         ###   ########lyon.fr   */
+/*   Created: 2021/06/30 13:13:18 by tgrangeo          #+#    #+#             */
+/*   Updated: 2021/07/02 10:09:41 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,17 @@
 # define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
-#include <iostream>
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
-
-public:
-
-	ScavTrap( void );
-	ScavTrap( std::string name );
-	ScavTrap( ScavTrap const & src );
-	~ScavTrap( void );
-
-	ScavTrap & operator=( ScavTrap const & rhs );
-
-	std::string	getName( void );
-	void		rangedAttack( std::string const & target );
-	void		meleeAttack( std::string const & target );
-	void		takeDamage( unsigned int amount );
-	void		beRepaired( unsigned int amount );
-	void		challengeNewcomer( std::string const & target );
-
-private:
-
-	static std::string _names_challenge[5];
-
+	public:
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap( ScavTrap & c);
+		ScavTrap& operator=( ScavTrap & c);
+		virtual ~ScavTrap(void);
+		void	guardGate(void);
+		void	attack( std::string const & target );
 };
 
 #endif

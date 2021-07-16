@@ -3,56 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdel-ros <jdel-ros@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 10:21:45 by jdel-ros          #+#    #+#             */
-/*   Updated: 2021/03/22 09:01:28 by jdel-ros         ###   ########lyon.fr   */
+/*   Created: 2021/03/04 09:57:34 by jdel-ros          #+#    #+#             */
+/*   Updated: 2021/07/02 10:28:52 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( std::string name, int hitPoints, int maxHitPoints, int energyPoints, int maxEnergyPoints, int level, int meleeAttackDamage, int rangedAttackDamage, int armorDamageReduction ): _name(name), _hitPoints(hitPoints), _maxHitPoints(maxHitPoints), _energyPoints(energyPoints), _maxEnergyPoints(maxEnergyPoints), _level(level), _meleeAttackDamage(meleeAttackDamage), _rangedAttackDamage(rangedAttackDamage), _armorDamageReduction(armorDamageReduction)
-{
-	std::cout << "The Clap " << this->_name << " is created" << std::endl;
+ClapTrap::ClapTrap( void ):_type("CL4P-TP "),  _name("Default"), _hitPoints(10),_maxHitPoints(100), _energyPoints(10), _maxEnergyPoints(100),  _AttackDamage(0){
+	std::cout << this->_type << this->_name << " has appared !" << std::endl;
 }
 
-ClapTrap::ClapTrap(  ClapTrap const & src ): _name(src._name), _hitPoints(src._hitPoints), _maxHitPoints(src._maxHitPoints), _energyPoints(src._energyPoints), _maxEnergyPoints(src._maxEnergyPoints), _level(src._level), _meleeAttackDamage(src._meleeAttackDamage), _rangedAttackDamage(src._rangedAttackDamage), _armorDamageReduction(src._armorDamageReduction)
-{
-	std::cout << "The copy of Clap " << this->_name << " is created" << std::endl;
+ClapTrap::ClapTrap( std::string name, int hp, int ep, int ad):_type("CL4P-TP "), _name(name), _hitPoints(hp), _maxHitPoints(100), _energyPoints(ep), _maxEnergyPoints(100),  _AttackDamage(ad){
+	std::cout << this->_type << this->_name << " has appared !" << std::endl;
+}
+
+ClapTrap::ClapTrap( std::string name ): _type("CL4P-TP "), _name(name), _hitPoints(10), _maxHitPoints(100), _energyPoints(10), _maxEnergyPoints(100),  _AttackDamage(0){
+	std::cout << this->_type << this->_name << " has appared !" << std::endl;
+}
+
+ClapTrap::ClapTrap(  ClapTrap const & src ): _name(src._name), _hitPoints(src._hitPoints), _maxHitPoints(src._maxHitPoints), _energyPoints(src._energyPoints), _maxEnergyPoints(src._maxEnergyPoints), _AttackDamage(src._AttackDamage){
+	std::cout << "The copy of CL4P-TP " << this->_name << " has appared !" << std::endl;
 	*this = src;
 }
 
 ClapTrap::~ClapTrap ( void )
 {
-	std::cout << "The Clap " << this->_name << " was killed" << std::endl;
+	std::cout << this->_type << this->_name << " was killed " << std::endl;
 }
 
 ClapTrap &	ClapTrap::operator=( ClapTrap const & rhs)
 {
 	this->_name = rhs._name;
+	this->_type	= rhs._type;
+	this->_AttackDamage = rhs._AttackDamage;
+	this->_hitPoints = rhs._hitPoints;
+	this->_maxHitPoints = rhs._maxHitPoints;
+	this->_energyPoints = rhs._energyPoints;
+	this->_maxEnergyPoints = rhs._maxEnergyPoints;
 	return *this;
 }
 
-std::string ClapTrap::getName( void )
-{
-	return this->_name;
+const std::string & ClapTrap::getName(void) const{
+	const std::string	&name = _name;
+	return name;
 }
+
+void	ClapTrap::setName(std::string name){
+	_name = name;
+}
+
 
 void	ClapTrap::takeDamage( unsigned int amount )
 {
-	this->_hitPoints -= amount - _armorDamageReduction;
-	if (this->_hitPoints < 0)
+	this->_hitPoints -= amount;
+	if (this->_hitPoints <= 0){
 		this->_hitPoints = 0;
+		std::cout << this->_type << this->_name << " is KO" << std::endl;
+	}
 	if (this->_hitPoints > 0)
-		std::cout << "Clap block " << _armorDamageReduction << " HP with his armor" << std::endl;
-	std::cout << "Clap have " << _hitPoints << " HP !" << std::endl;
+		std::cout << this->_type << this->_name << " has " << _hitPoints << " HP !" << std::endl;
 }
 
 void	ClapTrap::beRepaired( unsigned int amount )
 {
 	this->_hitPoints += amount;
-	if (this->_hitPoints > _maxHitPoints)
+	if (this->_hitPoints > _maxHitPoints){
 		this->_hitPoints = _maxHitPoints;
-	std::cout << "Clap have " << _hitPoints << " HP !" << std::endl;
+		std::cout << this->_type << this->_name << " is full hp" << std::endl;
+	}
+	else
+		std::cout << this->_type << this->_name << " have " << _hitPoints << " HP !" << std::endl;
+}
+
+void	ClapTrap::attack( std::string const & target )
+{
+	std::cout << this->_type << this->_name << " attacks " << target << " at melee, causing " << _AttackDamage << " points of damage !" << std::endl;
 }
