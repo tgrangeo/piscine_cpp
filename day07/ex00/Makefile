@@ -6,17 +6,17 @@
 #    By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 12:00:49 by tgrangeo          #+#    #+#              #
-#    Updated: 2021/07/19 12:02:27 by tgrangeo         ###   ########lyon.fr    #
+#    Updated: 2021/07/19 12:02:33 by tgrangeo         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_NAME	=	Convert.cpp main.cpp
+SRCS_NAME	= main.cpp
 				
 OBJS		=	${SRCS_NAME:.cpp=.o}
 
-NAME		=	Convert
+NAME		=	ex00
 
-HEADER		= Convert.hpp
+HEADER		=	whatever.hpp
 
 RM			=	rm -f
 
@@ -26,7 +26,7 @@ FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)	
 
-%.o: %.cpp		
+%.o: %.cpp
 		$(CC) $(FLAGS) -c $< -o $@
 	
 $(NAME): $(OBJS) $(HEADER)
