@@ -6,7 +6,7 @@
 /*   By: tgrangeo <tgrangeo@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 12:15:05 by tgrangeo          #+#    #+#             */
-/*   Updated: 2021/07/19 15:31:17 by tgrangeo         ###   ########lyon.fr   */
+/*   Updated: 2021/07/20 14:23:19 by tgrangeo         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void ft<float>(float & t )
 
 int main(void){
 	std::cout << std::endl;
-
 	{//test afficher tableau int
 	int *tab_int = new int[3];
 	tab_int[0] = 1;
@@ -59,9 +58,7 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_int;
 	}
-	
 	std::cout << std::endl;
-
 	{//test int + 1
 	int *tab_int = new int[3];
 	tab_int[0] = 1;
@@ -71,9 +68,7 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_int;
 	}
-	
 	std::cout << std::endl;
-
 	{//test afficher tableau double
 	double *tab_double = new double[3];
 	tab_double[0] = 1.32;
@@ -83,9 +78,7 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_double;
 	}
-	
 	std::cout << std::endl;
-
 	{//test float * 2
 	float *tab_float = new float[3];
 	tab_float[0] = 1.32;
@@ -95,9 +88,7 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_float;
 	}
-	
 	std::cout << std::endl;
-
 	{//test afficher tableau char
 	std::string *tab_char = new std::string[3];
 	tab_char[0] = "salut";
@@ -107,9 +98,7 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_char;
 	}
-	
 	std::cout << std::endl;
-
 	{//test modify tableau char
 	std::string *tab_char = new std::string[3];
 	tab_char[0] = "salut";
@@ -119,8 +108,6 @@ int main(void){
 	std::cout << std::endl;
 	delete [] tab_char;
 	}
-	
 	std::cout << std::endl;
-	
 	return 0;
 }
